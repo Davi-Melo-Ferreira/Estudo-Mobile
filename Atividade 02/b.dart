@@ -3,38 +3,38 @@
 import 'dart:io';
 
 void main() {
-  String? opcao = null;
+  String? opcao;
+  int? a;
+  int calculo = 1;
 
   while (opcao != 'n') {
-    int? a = null;
-    opcao = null;
-    int calculo = 1;
 
-    while (a == null) {
-      stdout.write("\nDigite um valor para o fatorial: ");
-      String? inputA = stdin.readLineSync();
-      a = (inputA != null) ? int.tryParse(inputA) : null;
-      if (a == null || a < 1) {
-        print('Valor inválido! Somente inteiros maiores que 1');
-      }
+    stdout.write("\nDigite um valor para o fatorial: ");
+    String? inputA = stdin.readLineSync();
+    a = (inputA != null) ? int.tryParse(inputA) : null;
+    if (a == null || a < 1) {
+      print('Valor inválido! Somente inteiros maiores que 1');
+      continue;
     }
 
     for (int i = a; i != 0; i--) {
       calculo *= i;
       if (i == 1) {
         stdout.write('$i ');
-      } else{
+      } else {
         stdout.write('$i x ');
       }
     }
     print('= $calculo\n');
 
-    while (opcao != 's' && opcao != 'n') {
+    while (true) {
       stdout.write('Deseja Tentar de novo?(s/n): ');
       String? inputOpcao = stdin.readLineSync();
       opcao = (inputOpcao!.toLowerCase());
       if (opcao != 's' && opcao != 'n') {
         print('Valor inválido!');
+      } else {
+        break;
       }
     }
   }

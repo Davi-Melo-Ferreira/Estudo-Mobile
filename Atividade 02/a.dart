@@ -3,52 +3,56 @@
 import 'dart:io';
 
 void main() {
-  String? opcao = 's';
-  while (opcao != 'n') {
-    int? a = null;
-    int? b = null;
-    int maior = 0;
-    int menor = 0;
-    while (a == null) {
-      stdout.write("\nDigite o valor de A: ");
-      String? inputA = stdin.readLineSync();
-      a = (inputA != null) ? int.tryParse(inputA) : null;
-      if (a == null || a < 1) {
-        print('Valor inválido! Somente inteiros maiores que 1');
-      }
+  String? input;
+  String? a;
+  String? b;
+  int? maior;
+  int? menor;
+
+  while (input != 'n') {
+    stdout.write("\nDigite o valor de A: ");
+    a = stdin.readLineSync();
+    int? numero1 = (a != null) ? int.tryParse(a) : null;
+
+    if (numero1 == null) {
+      print('Número inválido! Digite um valor inteiro.');
+      continue;
     }
-    while (b == null) {
-      stdout.write("Digite o valor de B: ");
-      String? inputB = stdin.readLineSync();
-      b = (inputB != null) ? int.tryParse(inputB) : null;
-      if (b == null || b < 1) {
-        print('Valor inválido!  Somente inteiros maiores que 1');
-      } else if (b == a) {
-        print('A e B devem possuir valores diferentes!');
-      }
+
+    stdout.write("\nDigite o valor de B: ");
+    b = stdin.readLineSync();
+    int? numero2 = (b != null) ? int.tryParse(b) : null;
+
+    if (numero2 == null) {
+      print('Número inválido! Digite um valor inteiro.');
+      continue;
     }
-    if (a > b) {
-      maior = a;
-      menor = b;
-    } else if (b > a) {
-      maior = b;
-      menor = a;
+
+    if (numero1 > numero2) {
+      maior = numero1;
+      menor = numero2;
+    } else if (numero2 > numero1) {
+      maior = numero2;
+      menor = numero1;
     }
-    print('\nNúmeros Primos entre $menor e $maior');
-    for (int i = menor + 1; i < maior; i++) {
-      if (i == 2 || i == 3) {
-        print(i);
-      } else if (i % 2 != 0 && i % 3 != 0 && i % 4 != 0) {
-        print(i);
+    if (maior != null && menor != null){
+      print('\nNúmeros Primos entre $menor e $maior');
+      for (int i = menor + 1; i < maior; i++) {
+        if (i == 2 || i == 3) {
+          print(i);
+        } else if (i % 2 != 0 && i % 3 != 0 && i % 4 != 0) {
+          print(i);
+        }
       }
     }
 
-    while(opcao != 'n'){
-      stdout.write('Deseja Tentar de novo?(s/n): ');
-      String? inputOpcao = stdin.readLineSync();
-      opcao = (inputOpcao!.toLowerCase());
-      if (opcao != 's' && opcao != 'n') {
-        print('Valor inválido!');
+    while (true) {
+      stdout.write('Deseja continuar? (s/n): ');
+      input = stdin.readLineSync();
+      if (input != null && input.isNotEmpty) {
+        if (input == 's' || input == 'n') {
+          break;
+        }
       }
     }
   }

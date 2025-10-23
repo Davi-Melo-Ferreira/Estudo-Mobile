@@ -3,32 +3,36 @@
 import 'dart:io';
 
 void main() {
-  String? opcao = null;
-
+  String? opcao;
+  int? data;
   while (opcao != 'n') {
-    int? data = null;
+    stdout.write('Digite um ano: ');
+    String? input = stdin.readLineSync();
+    data = (input!.isNotEmpty && input.length == 4)
+        ? int.tryParse(input)
+        : null;
 
-    while (data == null) {
-      stdout.write('Digite um ano: ');
-      String? input = stdin.readLineSync();
-      data = (input!.isNotEmpty && input.length == 4)
-          ? int.tryParse(input)
-          : null;
-      if (data == null) {
-        print('Valor inválido!');
-      }
-      ;
+    if (data == null) {
+      print('Valor inválido!');
+      continue;
     }
+    ;
+
     if (data % 4 == 0) {
       print('\nAno Bissexto');
     } else {
       print('\nO Ano não é Bissexto');
     }
 
-    while (opcao != 'n' && opcao != 's') {
-      stdout.write('Deseja continuar?(s/n): ');
+    while (true) {
+      stdout.write('Deseja Tentar de novo?(s/n): ');
       String? inputOpcao = stdin.readLineSync();
-      opcao = inputOpcao!;
+      opcao = (inputOpcao!.toLowerCase());
+      if (opcao != 's' && opcao != 'n') {
+        print('Valor inválido!');
+      } else {
+        break;
+      }
     }
   }
 }
