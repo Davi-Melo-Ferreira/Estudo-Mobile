@@ -4,7 +4,7 @@
 import 'dart:io';
 
 void main() {
-  String? opcao = 's';
+  String? opcao;
   int? numero;
 
   while (opcao != 'n') {

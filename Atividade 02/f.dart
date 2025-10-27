@@ -2,7 +2,7 @@
 // e converta para calorias (1 caloria = 4,184 joules), exibindo os resultados.
 import 'dart:io';
 void main() {
-  String? opcao = 's';
+  String? opcao;
   double? joules;
 
   while(opcao != 'n'){

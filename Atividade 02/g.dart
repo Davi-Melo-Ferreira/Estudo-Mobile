@@ -3,12 +3,14 @@
 import 'dart:io';
 import 'dart:math';
 void main() {
-  String? opcao = 's';
+  String? opcao;
 
   while (opcao != 'n') {
     stdout.write('Digite um número inteiro positivo: ');
     String? input = stdin.readLineSync();
+
     int? numero = (input != null) ? int.tryParse(input) : null;
+  
 
     if (numero == null || numero < 0) {
       print('Valor inválido!');
@@ -23,6 +25,7 @@ void main() {
     while (true) {
       stdout.write('Deseja continuar?(s/n): ');
       String? inputOpcao = stdin.readLineSync();
+      
       if (inputOpcao != null) {
         if (inputOpcao != 's' && inputOpcao != 'n') {
           print('Valor inválido!');
