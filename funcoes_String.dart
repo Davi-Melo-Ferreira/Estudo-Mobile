@@ -22,7 +22,7 @@ void main() {
   print('-' * 70);
   print('Frase original: $frase');
   print('=' * 70);
-  print('Tamanho da frase: $frase');
+  print('Tamanho da frase: $tamanhoString');
   print('Maiúscula: $fraseMaiuscula');
   print('Minúscula: $fraseMinuscula');
   print('-' * 70);
