@@ -1,19 +1,19 @@
-// 6. Filtragem Dupla em Lista de Palavras
-// Dada uma lista de palavras (strings),
-// filtre e colete em uma nova lista apenas as palavras que satisfazem
-// duas condições simultâneas:
-// 1 (o comprimento da palavra deve ser maior que 5 caracteres;
-// 2 (a palavra deve começar com a letra 'A' (maiúscula ou minúscula)).
+// 10. Reversão Manual da Ordem dos Elementos
+// Dada uma lista de strings, crie uma nova lista que contenha os mesmos elementos,
+//  mas na ordem inversa da lista original. O uso de List.
+//  reversed é permitido para fins de comparação,
+//  mas a implementação principal deve usar uma estrutura de repetição (for ou while).
 import 'dart:io';
 
 void main() {
-  List<String> listaStrings = ['Abacaxi', 'Jabuticaba', 'Abóbora', 'Maçã'];
+  List<String> listaNova = [];
+  List<String> listaStrings = ['Primeiro', 'Segundo', 'Terceiro', 'Quarto'];
   while (true) {
     print('Lista Original: $listaStrings');
-    List<String> listaNova = listaStrings
-        .where((num) => num.length > 5 && num[0].toLowerCase() == 'a')
-        .toList();
-    print('lista Nova: $listaNova');
+    for (int i = listaStrings.length - 1; i > -1; i--) {
+      listaNova.add(listaStrings[i]);
+    }
+    print('Lista Nova: $listaNova');
 
     while (true) {
       stdout.write('Deseja Recomeçar? (s/n): ');

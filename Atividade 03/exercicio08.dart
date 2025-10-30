@@ -1,19 +1,16 @@
-// 6. Filtragem Dupla em Lista de Palavras
-// Dada uma lista de palavras (strings),
-// filtre e colete em uma nova lista apenas as palavras que satisfazem
-// duas condições simultâneas:
-// 1 (o comprimento da palavra deve ser maior que 5 caracteres;
-// 2 (a palavra deve começar com a letra 'A' (maiúscula ou minúscula)).
+// 8. Transformação de Lista de Palavras em Lista de Comprimentos
+// Dada uma lista de palavras, crie uma nova lista de inteiros onde cada inteiro
+// representa o número de caracteres da palavra correspondente na lista original.
+
 import 'dart:io';
 
 void main() {
-  List<String> listaStrings = ['Abacaxi', 'Jabuticaba', 'Abóbora', 'Maçã'];
+  List<String> listaStrings = ['Acabar', 'Enjuria', 'Sorte', 'Saudar'];
+  List<int> listaInteiros = [];
   while (true) {
     print('Lista Original: $listaStrings');
-    List<String> listaNova = listaStrings
-        .where((num) => num.length > 5 && num[0].toLowerCase() == 'a')
-        .toList();
-    print('lista Nova: $listaNova');
+    listaStrings.forEach((i) => listaInteiros.add(i.length));
+    print('Lista Nova: $listaInteiros');
 
     while (true) {
       stdout.write('Deseja Recomeçar? (s/n): ');

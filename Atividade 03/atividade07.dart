@@ -1,19 +1,17 @@
-// 6. Filtragem Dupla em Lista de Palavras
-// Dada uma lista de palavras (strings),
-// filtre e colete em uma nova lista apenas as palavras que satisfazem
-// duas condições simultâneas:
-// 1 (o comprimento da palavra deve ser maior que 5 caracteres;
-// 2 (a palavra deve começar com a letra 'A' (maiúscula ou minúscula)).
+// 7. Criação de Frase com Filtro
+// Dada uma lista de strings, crie uma única string (frase)
+// concatenando apenas as palavras que terminam com a letra 'R'.
+// As palavras devem ser separadas por um espaço na frase final.
+
 import 'dart:io';
 
 void main() {
-  List<String> listaStrings = ['Abacaxi', 'Jabuticaba', 'Abóbora', 'Maçã'];
+  List<String> listaStrings = ['Acabar', 'Enjuria', 'Sorte', 'Saudar'];
   while (true) {
     print('Lista Original: $listaStrings');
-    List<String> listaNova = listaStrings
-        .where((num) => num.length > 5 && num[0].toLowerCase() == 'a')
-        .toList();
-    print('lista Nova: $listaNova');
+    String string = listaStrings
+        .where((num) => num[num.length - 1].toLowerCase() == 'r').join(' ');
+    print('String Com Palavras que Terminam com R: $string');
 
     while (true) {
       stdout.write('Deseja Recomeçar? (s/n): ');
