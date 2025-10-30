@@ -9,8 +9,8 @@ import 'dart:io';
 
 void main() {
   while (true) {
-    List<int> listaInteiros = [1, 2, 3, 4, 2, 6, 3, 10];
-    List<int> listaRepetida = listaInteiros;
+    // List<int> listaInteiros = [1, 2, 3, 4, 2, 6, 3, 10];
+    // List<int> listaRepetida = listaInteiros;
     List<int> listaUnicos = [];
 
     // Cálculo Aqui ↓
