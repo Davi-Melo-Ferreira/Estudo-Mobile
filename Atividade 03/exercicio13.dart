@@ -1,25 +1,29 @@
-// 11. Seleção de Registros por Idade Mínima
-// Dada uma lista de Maps,
-// onde cada Map representa um usuário com as chaves "nome" (String) e "Idade" (int),
-// filtre e colete em uma nova lista apenas os Maps dos usuários que são maiores de 18 anos.
+// 13. Mapeamento de Mapas para Strings Formatadas
+// Dada a lista de Maps do exercício anterior (Produtos),
+// crie uma nova lista de strings onde cada string é um resumo
+// formatado do produto, no formato:
+// "Produto [Nome] - Estoque: [Estoque]".
+
 import 'dart:io';
 
 void main() {
     List<String> listaNomes = ['Ana', 'João', 'Marcos', 'Pedro', 'Lucas'];
     List<int> listaIdade = [22, 17, 19, 16, 25];
+    List<String> lista = [];
   while (true) {
     
-    for (int i = listaNomes.length - 1; i >= 0; i--) {
-      if (listaIdade[i] < 18) {
-        listaNomes.removeAt(i);
-        listaIdade.removeAt(i);
+    for (int i = listaNomes.length - 1; i > 0; i--){
+        // var idade = listaIdade[i].toString();
+        lista.addAll([listaNomes[i], listaIdade[i].toString()]);
+    }
+    for (String char in lista) {
+      if (int.tryParse(char) != null) {
+        print('Idade: $char');
+      } else {
+        stdout.write('Nome: $char - ');
       }
     }
     
-    print('Filtrados:');
-    for (int i = 0; i < listaNomes.length; i++) {
-      print('Nome: ${listaNomes[i]} | Idade: ${listaIdade[i]}');
-    }
 
     while (true) {
       stdout.write('Deseja Recomeçar? (s/n): ');
