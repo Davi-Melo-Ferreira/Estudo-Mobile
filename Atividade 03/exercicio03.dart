@@ -6,21 +6,50 @@
 import 'dart:io';
 
 void main(){
-    List<int> listaInt = [6, 5, 3, 4, 8, 7];
+    List<int> listaInteiros = [];
     double soma = 0;
   while (true){
+    bool verificarInteiros = true;
+
+    stdout.write("Digite valores inteiros de uma lista(separe com espaços): ");
+    String? input = stdin.readLineSync();
+    input = (input != null && input.isNotEmpty) ? input.trim() : null;
+
+    if (input != null) {
+      List<String> listaString = input.split(' ');
+
+      for (String char in listaString) {
+        int? inteiro = int.tryParse(char);
+
+        if (inteiro != null) {
+          listaInteiros.add(inteiro);
+          verificarInteiros = true;
+        } else {
+          print('$char não é um inteiro');
+          verificarInteiros = false;
+          break;
+        }
+      }
+      if (verificarInteiros == false) {
+        continue;
+      }
+    } else {
+      print('Valor nulo não é permitido!');
+      continue;
+    }
+
+    // Código Aqui ↓  
+      print("Lista Original: $listaInteiros");
+      listaInteiros.sort();
+      print("Lista Ordenada: $listaInteiros");
+      listaInteiros.removeAt(0);
+      print("Lista Sem o Menor Número: $listaInteiros");
       
-      print("Lista Original: $listaInt");
-      listaInt.sort();
-      print("Lista Ordenada: $listaInt");
-      listaInt.removeAt(0);
-      print("Lista Sem o Menor Número: $listaInt");
-      
-      for (int i in listaInt){
+      for (int i in listaInteiros){
         soma += i;
       }
 
-      soma = soma / listaInt.length;
+      soma = soma / listaInteiros.length;
       print('Média das Notas: $soma');
     
     // saída do loop

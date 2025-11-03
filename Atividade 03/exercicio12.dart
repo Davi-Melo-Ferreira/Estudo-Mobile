@@ -5,26 +5,28 @@
 // calcule a soma total do estoque de todos os produtos
 // que estão com o status "ativo" igual a true.
 
-
 import 'dart:io';
 
 void main() {
-    List<String> listaNomes = ['banana', 'fita adesiva', 'óleo', 'camisinha', 'sonífero'];
-    List<int> listaEstoque = [22, 17, 19, 16, 25];
-    List<bool> listaAtivos = [false, true, false, true, true];
-    List<List> lista = [listaNomes, listaEstoque, listaAtivos];
+  List<String> listaNomes = [
+    'banana',
+    'fita adesiva',
+    'óleo',
+    'camisinha',
+    'sonífero',
+  ];
+  List<int> listaEstoque = [22, 17, 19, 16, 25];
+  List<bool> listaAtivos = [false, true, false, true, true];
   while (true) {
-      int soma = 0;
-    for (int i in listaEstoque){
-        var indc = listaEstoque.indexOf(i);
-        if(listaAtivos[indc] == true){
-            soma += i;
-        }
+    int soma = 0;
+    for (int i in listaEstoque) {
+      var indc = listaEstoque.indexOf(i);
+      if (listaAtivos[indc] == true) {
+        soma += i;
+      }
     }
-    
+
     print('Soma de todos os produtos ativos: $soma');
-    
-    
 
     while (true) {
       stdout.write('Deseja Recomeçar? (s/n): ');

@@ -7,7 +7,6 @@
 
 
 import 'dart:io';
-import 'dart:math';
 void main() {
     List<int> listaPrincipal = [3, -1, 0, 5, -2, 4, 0, -7];
     List<int> listaNova = [];

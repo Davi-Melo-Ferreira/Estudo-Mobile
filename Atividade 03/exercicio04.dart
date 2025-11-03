@@ -7,12 +7,41 @@
 import 'dart:io';
 
 void main(){
+  List<int> listaInteiros = [];
+  List<int> novaLista = [];
   while (true){
-    List<int> listaInt = [6, 5, 3, 4, 8, 7];
-    List<int> novaLista = [];
-    
-    for (int i = 0; i < listaInt.length; i++) {
-        int numero = listaInt[i];
+    bool verificarInteiros = true;
+
+    stdout.write("Digite valores inteiros de uma lista(separe com espaços): ");
+    String? input = stdin.readLineSync();
+    input = (input != null && input.isNotEmpty) ? input.trim() : null;
+
+    if (input != null) {
+      List<String> listaString = input.split(' ');
+
+      for (String char in listaString) {
+        int? inteiro = int.tryParse(char);
+
+        if (inteiro != null) {
+          listaInteiros.add(inteiro);
+          verificarInteiros = true;
+        } else {
+          print('$char não é um inteiro');
+          verificarInteiros = false;
+          break;
+        }
+      }
+      if (verificarInteiros == false) {
+        continue;
+      }
+    } else {
+      print('Valor nulo não é permitido!');
+      continue;
+    }
+
+    // Código Aqui ↓  
+    for (int i = 0; i < listaInteiros.length; i++) {
+        int numero = listaInteiros[i];
         print(numero);
     
         if (numero % 2 != 0) {
@@ -25,7 +54,7 @@ void main(){
         }
     }
 
-    print('Lista original: $listaInt');
+    print('Lista original: $listaInteiros');
     print('Lista transformada: $novaLista');
       
       // saída do loop

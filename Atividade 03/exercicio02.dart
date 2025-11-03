@@ -8,17 +8,58 @@
 import 'dart:io';
 
 void main() {
+  List<int> listaInteiros = [];
+  List<int> listaUnicos = [];
   while (true) {
-    // List<int> listaInteiros = [1, 2, 3, 4, 2, 6, 3, 10];
-    // List<int> listaRepetida = listaInteiros;
-    List<int> listaUnicos = [];
+    bool verificarInteiros = true;
+
+    stdout.write("Digite valores inteiros de uma lista(separe com espaços): ");
+    String? input = stdin.readLineSync();
+    input = (input != null && input.isNotEmpty) ? input.trim() : null;
+
+    if (input != null) {
+      List<String> listaString = input.split(' ');
+
+      for (String char in listaString) {
+        int? inteiro = int.tryParse(char);
+
+        if (inteiro != null) {
+          listaInteiros.add(inteiro);
+          verificarInteiros = true;
+        } else {
+          print('$char não é um inteiro');
+          verificarInteiros = false;
+          break;
+        }
+      }
+      if (verificarInteiros == false) {
+        continue;
+      }
+    } else {
+      print('Valor nulo não é permitido!');
+      continue;
+    }
 
     // Cálculo Aqui ↓
-    
+    Set<int> listaRepetida = listaInteiros.toSet();
 
+    for (int i in listaRepetida) {
+      int verificacao = 0;
+      for (int numero in listaInteiros) {
+        if (numero == i) {
+          verificacao += 1;
+        }
+      }
+      if (verificacao == 1) {
+        listaUnicos.add(i);
+      }
+    }
     print('-' * 70);
     print('\nLista com Todos os elementos únicos:');
     print(listaUnicos);
+    print('-' * 70);
+    print('\nTotal de elementos únicos:');
+    print(listaUnicos.length);
 
     while (true) {
       stdout.write('Deseja Recomeçar? (s/n): ');

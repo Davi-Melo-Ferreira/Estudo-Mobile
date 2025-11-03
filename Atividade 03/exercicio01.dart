@@ -3,7 +3,6 @@
 // o objetivo é primeiro filtrar apenas os números que são pares e,
 // simultaneamente, maiores que 10. Após a filtragem,
 // deve-se calcular a soma total desses números restantes.
-
 import 'dart:io';
 
 void main() {
@@ -18,15 +17,17 @@ void main() {
 
     if (input != null) {
       List<String> listaString = input.split(' ');
+
       for (String char in listaString) {
         int? inteiro = int.tryParse(char);
+
         if (inteiro != null) {
           listaInteiros.add(inteiro);
           verificarInteiros = true;
         } else {
           print('$char não é um inteiro');
           verificarInteiros = false;
-          continue;
+          break;
         }
       }
       if (verificarInteiros == false) {

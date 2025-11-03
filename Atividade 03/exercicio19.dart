@@ -18,7 +18,6 @@ void main() {
     double raizAmostral = 0;
     
   while (true) {
-    int soma = 0;
     if (listaPrincipal.length > 2){
       media = listaPrincipal.reduce((a, b) => a + b) / listaPrincipal.length;
       
