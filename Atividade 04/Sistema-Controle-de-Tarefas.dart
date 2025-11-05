@@ -100,11 +100,11 @@ void main() {
           input = input != null && input.isNotEmpty ? input : null;
 
           if (input != null) {
+            verify = false;
             for (var mapa in tarefas) {
               if (mapa['titulo'] == input) {
+                verify = true;
                 continue;
-              } else {
-                verify = false;
               }
             }
             if (!verify) {
@@ -114,8 +114,7 @@ void main() {
             print("-" * 30);
             print(
               '1. Nome\n'
-              '2. Descrição\n'
-              '3. Concluída\n',
+              '2. Descrição\n',
             );
             print("-" * 30);
 
@@ -123,74 +122,52 @@ void main() {
               'Digite o número correspondente ao que deseja editar: ',
             );
             String? inputEdit = stdin.readLineSync();
-            input = inputEdit != null && inputEdit.isNotEmpty
+            inputEdit = inputEdit != null && inputEdit.isNotEmpty
                 ? inputEdit
                 : null;
+
             if (inputEdit != null) {
               switch (inputEdit) {
                 case '1':
                   stdout.write('Digite o novo Valor a ser Inserido: ');
                   String? inputNovo = stdin.readLineSync();
-                  input = inputNovo != null && inputNovo.isNotEmpty
+                  inputNovo = inputNovo != null && inputNovo.isNotEmpty
                       ? inputNovo
                       : null;
 
                   if (inputNovo != null) {
+                    verify = false;
                     for (var mapa in tarefas) {
-                      if (mapa['titulo'] == inputNovo) {
+                      if (mapa['titulo'] == input) {
                         mapa.update('titulo', (valorNovo) => inputNovo);
-                      } else {
-                        verify = false;
+                        verify = true;
                       }
                     }
-                    if (!verify) {
-                      print('Nome não encontrado!');
-                    }
+                    if (!verify) print('Nome não encontrado!');
                   } else {
                     print('Valor nulo Inválido!');
                   }
                 case '2':
                   stdout.write('Digite o novo Valor a ser Inserido: ');
                   String? inputNovo = stdin.readLineSync();
-                  input = inputNovo != null && inputNovo.isNotEmpty
+                  inputNovo = inputNovo != null && inputNovo.isNotEmpty
                       ? inputNovo
                       : null;
 
                   if (inputNovo != null) {
+                    verify = false;
                     for (var mapa in tarefas) {
-                      if (mapa['descricao'] == inputNovo) {
+                      if (mapa['titulo'] == input) {
                         mapa.update('descricao', (valorNovo) => inputNovo);
-                      } else {
-                        verify = false;
+                        verify = true;
                       }
                     }
-                    if (!verify) {
-                      print('Nome não encontrado!');
-                    }
+                    if (!verify) print('Nome não encontrado!');
                   } else {
                     print('Valor nulo Inválido!');
                   }
-                case '3':
-                  stdout.write('Digite o novo Valor a ser Inserido: ');
-                  String? inputNovo = stdin.readLineSync();
-                  input = inputNovo != null && inputNovo.isNotEmpty
-                      ? inputNovo
-                      : null;
-
-                  if (inputNovo != null) {
-                    for (var mapa in tarefas) {
-                      if (mapa['concluida'] == inputNovo) {
-                        mapa.update('concluida', (valorNovo) => inputNovo);
-                      } else {
-                        verify = false;
-                      }
-                    }
-                    if (!verify) {
-                      print('Nome não encontrado!');
-                    }
-                  } else {
-                    print('Valor nulo Inválido!');
-                  }
+                default:
+                  print('Valor inválido!');
               }
             }
           } else {
@@ -249,23 +226,34 @@ void main() {
               : null;
 
           if (inputNome != null) {
+            verify = false;
             for (var mapa in tarefas) {
               if (mapa['titulo'] == inputNome) {
                 mapa.update('concluida', (valor) => 'concluída');
                 print('\nTarefa Concluída!');
-              } else {
-                verify = false;
+                verify = true;
               }
             }
-            if (!verify) {
-              print('Nome não encontrado!');
-            }
+            if (!verify) print('Nome não encontrado!');
           } else {
             print('Valor nulo Inválido!');
           }
 
         // Termina o código
         case 6:
+          int concluidas = 0;
+          int pendentes = 0;
+          print('-' * 30);
+          for (var mapa in tarefas) {
+            if (mapa['concluida'] == 'concluída') {
+              concluidas++;
+            } else {
+              pendentes++;
+            }
+          }
+          print('Tarefas Pendentes: ${pendentes}\n');
+          print('Tarefas Concluidas: ${concluidas}');
+          print('-' * 30);
           return;
 
         default:
